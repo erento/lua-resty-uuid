@@ -7,6 +7,9 @@ local C            = ffi.C
 local os           = ffi.os
 local tonumber     = tonumber
 local setmetatable = setmetatable
+local package_searchpath = package.searchpath
+local package_cpath = package.cpath
+
 
 -- Avoid polluting the global environment.
 -- If we are in Lua 5.1 this function exists.
@@ -34,7 +37,7 @@ typedef struct timeval {
  time_t uuid_time(const uuid_t uu, struct timeval *ret_tv);
 ]]
 
-local lib = os == "OSX" and C or ffi_load "uuid"
+local lib = os == 'OSX' and C or ffi_load("uuid") or ffi_load(package_searchpath('uuid', package_cpath))
 local uid = ffi_new "uuid_t"
 local tvl = ffi_new "timeval"
 local buf = ffi_new("char[?]", 36)
