@@ -8,6 +8,14 @@ local os           = ffi.os
 local tonumber     = tonumber
 local setmetatable = setmetatable
 
+-- Avoid polluting the global environment.
+-- If we are in Lua 5.1 this function exists.
+if _G.setfenv then
+  setfenv(1, {})
+else -- Lua 5.2.
+  _ENV = nil
+end
+
 ffi_cdef[[
 typedef unsigned char uuid_t[16];
 typedef long time_t;
