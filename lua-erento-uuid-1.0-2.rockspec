@@ -1,5 +1,8 @@
-package = "lua-resty-uuid"
-version = "0.0.1-1"
+package = "lua-erento-uuid"
+version = "1.0-2"
+source = {
+  url = "git://github.com/erento/lua-resty-uuid.git"
+}
 description = {
   summary = "LuaJIT FFI-based UUID library.",
   detailed = "LuaJIT FFI bindings for libuuid, a DCE compatible Universally Unique Identifier library.",
@@ -10,20 +13,13 @@ description = {
 dependencies = {
   "lua >= 5.1"
 }
-source = {
-  url = "git://github.com/erento/lua-resty-uuid.git"
-}
 build = {
   type = "builtin",
-  platforms = {
-    unix = {
-      modules = {
-        ["resty.uuid"] = "lib/resty/uuid.lua",
-        ["libuuid"] = {
-          sources = {},
-          libraries = { "uuid" }
-        }
+    modules = {
+      ["resty.uuid"] = "lib/resty/uuid.lua",
+      libuuid = {
+        sources = {},
+        libraries = { "uuid" }
       }
-    }
   }
 }
