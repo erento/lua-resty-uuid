@@ -19,7 +19,7 @@ build = {
     unix = {
       modules = {
         ["resty.uuid"] = "lib/resty/uuid.lua",
-        libuuid = {
+        ["libuuid"] = {
           sources = {},
           libraries = { "uuid" }
         }
