@@ -1,5 +1,5 @@
 package = "lua-erento-uuid"
-version = "1.0-2"
+version = "1.0-5"
 source = {
   url = "git://github.com/erento/lua-resty-uuid.git"
 }
