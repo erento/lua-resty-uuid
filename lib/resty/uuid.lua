@@ -37,7 +37,7 @@ typedef struct timeval {
  time_t uuid_time(const uuid_t uu, struct timeval *ret_tv);
 ]]
 
-local lib = os == 'OSX' and C or ffi_load(package_searchpath('uuid', package_cpath) or 'uuid')
+local lib = os == 'OSX' and C or ffi_load(package_searchpath('libuuid', package_cpath) or 'uuid')
 local uid = ffi_new "uuid_t"
 local tvl = ffi_new "timeval"
 local buf = ffi_new("char[?]", 36)
